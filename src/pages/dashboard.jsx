@@ -11,19 +11,12 @@ export default securePage(function Dashboard() {
   const router = useRouter();
   const user = useUser();
 
-  const [companies, setCompanies] = useState([]);
-  useEffect(() => {
-    getCompanies(supabase).then(setCompanies);
-  }, []);
 
   const handleSignOut = async () => {
     await supabase.auth.signOut();
     router.push("/");
   };
 
-  const handlerDelete = (id) => async () => {
-    await deleteCompany(supabase, id);
-  };
 
   return (
     <div>
@@ -32,14 +25,6 @@ export default securePage(function Dashboard() {
         Sign out
       </button>
       <ul>
-        {companies.map((company, index) => (
-          <li key={company.id}>
-            {company.name}{" "}
-            <button type="button" onClick={handlerDelete(company.id)}>
-              Delete
-            </button>
-          </li>
-        ))}
       </ul>
     </div>
   );

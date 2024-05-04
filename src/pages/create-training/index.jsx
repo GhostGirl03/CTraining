@@ -122,62 +122,7 @@ const values=form.watch()
                     <br />
 
                     <textarea id="quizes" name="quizes" rows="4" cols="50">
-                    <div id="quiz">
-    <form id="quiz-form">
-        <p>1. What is the capital of France?</p>
-        <input type="radio" name="q1" value="a"> a) London<br/>
-        <input type="radio" name="q1" value="b"> b) Paris<br/>
-        <input type="radio" name="q1" value="c"> c) Rome<br/>
-        <br/>
-        <p>2. Which planet is known a/s the Red Planet?</p>
-        <input type="radio" name="q2" value="a"> a) Mars<br/>
-        <input type="radio" name="q2" value="b"> b) Jupiter<br/>
-        <input type="radio" name="q2" value="c"> c) Saturn<br>
-        <br>
-        <p>3. How many continents are there on Earth?</p>
-        <input type="radio" name="q3" value="a"> a) 5<br>
-        <input type="radio" name="q3" value="b"> b) 6<br>
-        <input type="radio" name="q3" value="c"> c) 7<br>
-        <br>
-        <input type="submit" value="Submit">
-    </form>
-    <div id="results"></div>
-</div>
-
-<script>
-    const quizForm = document.getElementById('quiz-form');
-    const resultsDiv = document.getElementById('results');
-
-    quizForm.addEventListener('submit', function(event) {
-        event.preventDefault();
-
-        const formData = new FormData(quizForm);
-        let score = 0;
-
-        for (let pair of formData.entries()) {
-            const questionNumber = pair[0].charAt(1); // Extracting question number from input name
-            const correctAnswer = getCorrectAnswer(questionNumber);
-            if (pair[1] === correctAnswer) {
-                score++;
-            }
-        }
-
-        resultsDiv.innerHTML = `You scored ${score} out of ${formData.entries().length / 3}`;
-    });
-
-    function getCorrectAnswer(questionNumber) {
-        switch (questionNumber) {
-            case '1':
-                return 'b';
-            case '2':
-                return 'a';
-            case '3':
-                return 'c';
-            default:
-                return '';
-        }
-    }
-</script>
+                      Quizes here...
                     </textarea>
                     <br />
 

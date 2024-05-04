@@ -122,7 +122,7 @@ const values=form.watch()
                     <br />
 
                     <textarea id="quizes" name="quizes" rows="4" cols="50">
-                      Quizes here...
+                      
                     </textarea>
                     <br />
 

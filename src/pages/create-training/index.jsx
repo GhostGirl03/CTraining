@@ -13,7 +13,7 @@ import { TrainingSchema } from "@/services/schemas";
 import ReactPlayer from 'react-player';
 import { Document } from 'react-pdf';
 
-export default securePage(function CreateTraining() {
+export default securePage (function CreateTraining(){
   const supabase = useSupabaseClient();
   const router = useRouter();
   const user = useUser();
@@ -66,7 +66,7 @@ const values=form.watch()
           setScore(0);
       }
   };
-
+  
   return (
     <div className="container">
       <div className="row">
@@ -134,12 +134,8 @@ const values=form.watch()
                   <DocumentInput
                     bucket="documents"
                     value={field.value}
-                    onChange={field.onChange}
-                    
-                    
+                    onChange={field.onChange}  
                   />
-                 
-
                 )}
               />
                 
@@ -154,37 +150,28 @@ const values=form.watch()
                     </label>
                     <br />
 
-                    <textarea id="quizes" name="quizes" rows="4" cols="50">
                     <div>
-                <p>Question {currentQuestion + 1}:</p>
-                <p>{questions[currentQuestion].question}</p>
-                <ul>
-                    {questions[currentQuestion].options.map((option, index) => (
+                    <p>Question {currentQuestion + 1}:</p>
+                    <p>{questions[currentQuestion].question}</p>
+                    <ul>
+                      {questions[currentQuestion].options.map((option, index) => (
                         <li key={index} onClick={() => handleAnswerClick(option)}>
-                            {option}
+                          {option}
                         </li>
-                    ))}
-                </ul>
-            </div>
-                    </textarea>
-                    <br />
-
-
-                    <button type="button" >
-                      Add Quiz
-                    </button>
+                      ))}
+                    </ul>
                   </div>
                 </div>
               </div>
             </div>
-            <div>
-              <button type="submit">
-                Create Training
-              </button>
-            </div>
-          </form>
-        </div>
+          </div>
+          <div>
+            <button type="submit">Create Training</button>
+          </div>
+        </form>
       </div>
     </div>
-  );
+  </div>
+   );
+  }
 });

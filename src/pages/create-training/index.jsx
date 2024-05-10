@@ -34,6 +34,39 @@ const values=form.watch()
     console.log(data);
   };
 
+  function Quiz() {
+    const [currentQuestion, setCurrentQuestion] = useState(0);
+    const [score, setScore] = useState(0);
+
+    const questions = [
+        {
+            question: 'What is 2 + 2?',
+            options: ['2', '3', '4', '5'],
+            answer: '4'
+        },
+        {
+            question: 'What is the capital of France?',
+            options: ['London', 'Paris', 'Rome', 'Berlin'],
+            answer: 'Paris'
+        },
+        // Add more questions as needed
+    ];
+    const handleAnswerClick = (selectedAnswer) => {
+      const isCorrect = selectedAnswer === questions[currentQuestion].answer;
+      if (isCorrect) {
+          setScore(score + 1);
+      }
+      const nextQuestion = currentQuestion + 1;
+      if (nextQuestion < questions.length) {
+          setCurrentQuestion(nextQuestion);
+      } else {
+          // Quiz is over
+          alert(`Quiz Over! Your score is ${score}/${questions.length}`);
+          setCurrentQuestion(0);
+          setScore(0);
+      }
+  };
+
   return (
     <div className="container">
       <div className="row">
@@ -122,9 +155,20 @@ const values=form.watch()
                     <br />
 
                     <textarea id="quizes" name="quizes" rows="4" cols="50">
-                      
+                    <div>
+                <p>Question {currentQuestion + 1}:</p>
+                <p>{questions[currentQuestion].question}</p>
+                <ul>
+                    {questions[currentQuestion].options.map((option, index) => (
+                        <li key={index} onClick={() => handleAnswerClick(option)}>
+                            {option}
+                        </li>
+                    ))}
+                </ul>
+            </div>
                     </textarea>
                     <br />
+
 
                     <button type="button" >
                       Add Quiz
